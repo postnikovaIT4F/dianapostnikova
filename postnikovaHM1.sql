@@ -28,6 +28,15 @@ TABLESPACE pg_default;
 ALTER TABLE public.ratings_task
     OWNER to postgres;
 	
+-- Команда для импорта данных из файла в готовую таблицу.
+-- Внимание! PostgreSQL Server имеет ограниченные права доступа к файлам. Команда COPY будет работать из pgAdmin
+только, если загружаемый файл находится в папке с публичным доступом (например, ~\User\Public для Windows,
+/tmp для Mac). Альтернатива - использовать команду \COPY, которая обходит все права доступа, но ее нужно запускать
+из терминала SQL Shell (psql). Ниже представлены оба вариант. Используйте тот, который Вам больше нравится.
+
+-- copy public.ratings_task  FROM 'C:/Users/Public/ratings_task.csv' DELIMITER ';' CSV HEADER;
+\copy public.ratings_task  FROM 'C:/Users/Public/ratings_task.csv' DELIMITER ';' CSV HEADER;
+
 
 
 
@@ -48,6 +57,10 @@ TABLESPACE pg_default;
 ALTER TABLE public.credit_events_task
     OWNER to postgres;
 	
+-- Команда для импорта данных из файла в готовую таблицу.
+-- copy public.credit_events_task  FROM 'C:/Users/Public/credit_events_task.csv' DELIMITER ';' CSV HEADER;
+\copy public.credit_events_task  FROM 'C:/Users/credit_events_task.csv' DELIMITER ';' CSV HEADER;
+
 
 
 
@@ -67,6 +80,10 @@ TABLESPACE pg_default;
 
 ALTER TABLE public."scale_EXP_task"
     OWNER to postgres;
+
+-- Команда для импорта данных из файла в готовую таблицу.
+-- copy public.scale_EXP_task  FROM 'C:/Users/Public/scale_EXP_task.csv' DELIMITER ';' CSV HEADER;
+\copy public.scale_EXP_task  FROM 'C:/Users/scale_EXP_task.csv' DELIMITER ';' CSV HEADER;
 
 
 
