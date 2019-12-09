@@ -198,6 +198,14 @@ DROP COLUMN IF EXISTS "inn",
 DROP COLUMN IF EXISTS "finst";
 
 
+-- 4. Данный запрос выводит для выбранных вида рейтинга (rat_id='49') и даты (date<='2014-11-18') все актуальные рейтинги.
+SELECT ent_name, max(date) as assign_date 
+FROM public.ratings_task INNER JOIN (select comp_id, ent_name from comp_inf) as third_select 
+ON public.ratings_task."comp_id"=third_select."comp_id"
+WHERE rat_id='49' and not grade='снят' and not grade='приостановлен' and date<='2014-11-18'
+GROUP BY ent_name
+
+
 
 -- Комментарий:
 -- Существенных замечаний по коду нет. Только все создаваемые Вами таблицы пусты, т.к. не прописаны процедуры копирования данных из файлов. 
